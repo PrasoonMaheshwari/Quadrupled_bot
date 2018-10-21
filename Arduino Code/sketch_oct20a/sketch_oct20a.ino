@@ -35,7 +35,15 @@ void setup() {
 }
 
 void loop() {
-  servo1.write(50, 50, false);
+  // put your main code here, to run repeatedly:
+  if (Serial.available() > 0) 
+  { 
+    bt = Serial.read(); 
+//    digitalWrite(led, 1);
+    Serial.println(bt); 
+    if(bt == 'F')
+    {
+       servo1.write(50, 50, false);
        servo2.write(80, 50, false);
        servo5.write(10, 50, false);
        servo6.write(30, 50, false);
@@ -82,4 +90,6 @@ void loop() {
        servo3.wait();
        servo4.wait();
        servo5.wait();
+      }
+  }
 }
